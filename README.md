@@ -62,6 +62,7 @@ import javax.swing.*
  * @link https://github.com/shirohoo/create-automation-jpa-entity
  * @param pakageName, primaryKey
  * <pre>
+ *
  *     this script's default primary key strategy is @GeneratedValue(strategy = GenerationType.IDENTITY)
  *     and specialized in Microsoft SQL Server
  *     and finally implemented Serializable so recommend that create serial version UID
@@ -75,8 +76,9 @@ import javax.swing.*
  *     >  enter primary key = memberId
  *
  *     example 2:
- *     table primary key column name = ID
- *     enter primary key = id
+ *     >  table primary key column name = ID
+ *     >  enter primary key = id
+ *
  * </pre>
  */
 
