@@ -128,8 +128,8 @@ def generate(out, tableName, className, fields) {
     out.println "@Getter"
     out.println "@Builder"
     out.println "@ToString"
-    out.println "@NoArgsConstructor"
     out.println "@AllArgsConstructor"
+    out.println "@NoArgsConstructor(access = AccessLevel.PROTECTED)"
     out.println "@Table(name = \"$tableName\")"
     out.println "public class $className implements Serializable {"
     out.println ""
@@ -238,8 +238,8 @@ import java.io.Serializable;
 @Getter
 @Builder
 @ToString
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "request_log")
 public class RequestLog implements Serializable {
 
