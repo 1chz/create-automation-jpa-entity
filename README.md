@@ -57,28 +57,28 @@ import com.intellij.psi.codeStyle.NameUtil
 
 import javax.swing.*
 
-/*
-* Written by: shirohoo
-* https://github.com/shirohoo/create-automation-jpa-entity
-*
-* Variable: pakageName, primaryKey
-*
-* this script's default primary key strategy is @GeneratedValue(strategy = GenerationType.IDENTITY)
-* and specialized in Microsoft SQL Server
-* and finally implemented Serializable so recommend that create serial version UID
-*
-* first. enter your project package name. for example:
-*   >  com.intelliJ.psi
-*
-* second. enter primary key column name of target database table.
-* this script is convert input to camel case. for example 1:
-*   >  table primary key column name = MEMBER_ID
-*   >  enter primary key = memberId
-*
-*   example 2:
-*   >  table primary key column name = ID
-*   >  enter primary key = id
-*/
+/**
+ * @author shirohoo
+ * @link https://github.com/shirohoo/create-automation-jpa-entity
+ * @param pakageName, primaryKey
+ * <pre>
+ *     this script's default primary key strategy is @GeneratedValue(strategy = GenerationType.IDENTITY)
+ *     and specialized in Microsoft SQL Server
+ *     and finally implemented Serializable so recommend that create serial version UID
+ *
+ *     first. enter your project package name. for example:
+ *     >  com.intelliJ.psi
+ *
+ *     second. enter primary key column name of target database table.
+ *     this script is convert input to camel case. for example 1:
+ *     >  table primary key column name = MEMBER_ID
+ *     >  enter primary key = memberId
+ *
+ *     example 2:
+ *     table primary key column name = ID
+ *     enter primary key = id
+ * </pre>
+ */
 
 columnType = [
         (~/(?i)bigint/)            : "Long",
