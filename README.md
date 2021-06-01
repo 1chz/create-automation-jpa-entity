@@ -58,9 +58,10 @@ import com.intellij.psi.codeStyle.NameUtil
 import javax.swing.*
 
 /**
- * @author shirohoo
+ * @author shirohoo 
  * @link https://github.com/shirohoo/create-automation-jpa-entity
- * @param pakageName, primaryKey
+ * @param pakageName , primaryKey
+ * 
  * <pre>
  *
  *     this script's default primary key strategy is @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -89,10 +90,11 @@ columnType = [
         (~/(?i)decimal/)           : "BigDecimal",
         (~/(?i)float|double|real/) : "Double",
         (~/(?i)datetime|timestamp/): "LocalDateTime",
-        (~/(?i)date/)              : "LocalDate",
         (~/(?i)time/)              : "LocalTime",
+        (~/(?i)date/)              : "LocalDate",
+        (~/(?i)nvarchar/)          : "nvarchar",
         (~/(?i)varchar/)           : "varchar",
-        (~/(?i)nvarchar/)          : "nvarchar"
+        (~/(?i)char/)              : "String"
 ]
 def input = {
     JFrame jframe = new JFrame()
@@ -113,7 +115,6 @@ FILES.chooseDirectoryAndSave("Choose directory", "Choose where to store generate
 def generate(table, dir) {
     def tableName = table.getName()
     def className = convertFieldName(tableName, true)
-    
     def fields = categorizeFields(table)
     new File(dir, className + ".java").withPrintWriter {
         out -> generate(out, tableName, className, fields)
@@ -181,6 +182,7 @@ def convertFieldName(str, capitalize) {
             .join("")
             .replaceAll(/[^\p{javaJavaIdentifierPart}[_]]/, "_")
     capitalize || s.length() == 1 ? s : Case.LOWER.apply(s[0]) + s[1..-1]
+}
 }
 ```
 
