@@ -128,10 +128,7 @@ def generate(out, tableName, className, fields) {
     out.println "import java.io.Serializable;"
     out.println ""
     out.println "@Entity"
-    out.println "@Getter"
-    out.println "@Builder"
-    out.println "@ToString"
-    out.println "@AllArgsConstructor"
+    out.println "@ToString @Getter"
     out.println "@NoArgsConstructor(access = AccessLevel.PROTECTED)"
     out.println "@Table(name = \"$tableName\")"
     out.println "public class $className implements Serializable {"
@@ -141,8 +138,7 @@ def generate(out, tableName, className, fields) {
             out.println " ${it.annos}"
         }
         if (it.name == primaryKey) {
-            out.println " @Id"
-            out.println " @GeneratedValue(strategy = GenerationType.IDENTITY)"
+            out.println " @Id @GeneratedValue(strategy = GenerationType.IDENTITY)"
         }
         if (it.type == 'nvarchar') {
             out.println " @Nationalized"
@@ -238,16 +234,12 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Getter
-@Builder
-@ToString
-@AllArgsConstructor
+@Getter @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "request_log")
 public class RequestLog implements Serializable {
 
- @Id
- @GeneratedValue(strategy = GenerationType.IDENTITY)
+ @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
  @Column(name = "id")
  private Long id
 
