@@ -58,10 +58,10 @@ import com.intellij.psi.codeStyle.NameUtil
 import javax.swing.*
 
 /**
- * @author shirohoo 
+ * @author shirohoo
  * @link https://github.com/shirohoo/create-automation-jpa-entity
  * @param pakageName , primaryKey
- * 
+ *
  * <pre>
  *
  *     this script's default primary key strategy is @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -143,13 +143,13 @@ def generate(out, tableName, className, fields) {
         if (it.type == 'nvarchar') {
             out.println " @Nationalized"
             out.println " @Column(name = \"${it.colName}\")"
-            out.println " private String ${it.name}"
+            out.println " private String ${it.name};"
         } else if (it.type == 'varchar') {
             out.println " @Column(name = \"${it.colName}\")"
-            out.println " private String ${it.name}"
+            out.println " private String ${it.name};"
         } else {
             out.println " @Column(name = \"${it.colName}\")"
-            out.println " private ${it.type} ${it.name}"
+            out.println " private ${it.type} ${it.name};"
         }
         out.println ""
     }
