@@ -58,8 +58,7 @@ import com.intellij.psi.codeStyle.NameUtil
 import javax.swing.*
 
 /**
- * @author shirohoo
- * @link https://github.com/shirohoo/create-automation-jpa-entity
+ * @author shirohoo* @link https://github.com/shirohoo/create-automation-jpa-entity
  * @param pakageName , primaryKey
  *
  * <pre>
@@ -96,14 +95,17 @@ columnType = [
         (~/(?i)varchar/)           : "varchar",
         (~/(?i)char/)              : "String"
 ]
+
 def input = {
     JFrame jframe = new JFrame()
     String answer = JOptionPane.showInputDialog(jframe, it)
     jframe.dispose()
     answer
 }
+
 packageName = input("Enter your package name")
 primaryKey = input("Enter column name of primary key ")
+
 FILES.chooseDirectoryAndSave("Choose directory", "Choose where to store generated files") { dir ->
     SELECTION.filter {
         it instanceof DasTable && it.getKind() == ObjectKind.TABLE
@@ -131,7 +133,7 @@ def generate(out, tableName, className, fields) {
     out.println "@ToString @Getter"
     out.println "@NoArgsConstructor(access = AccessLevel.PROTECTED)"
     out.println "@Table(name = \"$tableName\")"
-    out.println "public class $className implements Serializable {"
+    out.println "public class $className extends BaseEntity {"
     out.println ""
     fields.each() {
         if (it.annos != "") {
